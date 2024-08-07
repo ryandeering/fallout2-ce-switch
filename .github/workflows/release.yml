@@ -19,6 +19,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Extract version number from release tag
+        run: echo "F2_VERSION=${{ github.event.release.tag_name }}" >> $GITHUB_ENV
+
       - name: Run build commands inside Docker container
         run: |
           docker run --rm -v ${{ github.workspace }}:/workspace devkitpro/devkita64:latest bash -c "
