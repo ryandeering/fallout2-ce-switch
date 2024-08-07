@@ -10,8 +10,10 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED YES)
 set(CMAKE_CXX_EXTENSIONS NO)
 
-if(NOT DEFINED F2_VERSION)
-  set(F2_VERSION "0.0.0") # just to indicate it's a debug build
+if(NOT DEFINED ENV{F2_VERSION})
+  set(F2_VERSION "0.0.0")
+else()
+  set(F2_VERSION $ENV{F2_VERSION})
 endif()
 
 set(SDL2_INCLUDE_DIR "/opt/devkitpro/portlibs/switch/include/SDL2")
