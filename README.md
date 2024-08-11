@@ -32,8 +32,23 @@ You must own the game to play and have a Switch capable of running **unsigned co
 
 ## Configuration
 
-- **Resolution**: Not configurable at this time; values are hardcoded.
 - **Cursor Sensitivity**: Adjustable in options via mouse sensitivity. Note this will affect cursor speedup as well.
+- **Resolution**: You can configure resolution and scaling through a config file. Create a file in your `fallout2` folder called `fallout2_nx.ini` - It needs to follow the following structure:
+
+```ini
+[MAIN]
+SCR_WIDTH=1708
+SCR_HEIGHT=960
+SCALE_2X=1
+; Change resolution and determine scaling. SCALE_2X=1 will turn 2x scaling on. SCALE_2X=0 will turn it off. 
+
+[IFACE]
+IFACE_BAR_MODE=0
+IFACE_BAR_WIDTH=800
+IFACE_BAR_SIDE_ART=1
+IFACE_BAR_SIDES_ORI=0
+; I wouldn't change these if you don't know what you're doing. Related to the interface bar.`
+```
 
 ## Issues
 
