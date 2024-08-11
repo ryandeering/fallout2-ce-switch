@@ -127,7 +127,7 @@ int _GNW95_init_mode_ex(int width, int height, int bpp)
             }
 
             bool scale2x = false;
-            if (configGetBool(&resolutionConfig, "MAIN", "SCALE_2X", reinterpret_cast<int*>(&scale2x))) {
+            if (configGetBool(&resolutionConfig, "MAIN", "SCALE_2X", &scale2x)) {
                 scale = scale2x ? 2 : 1; // 0 = 1x, 1 = 2x
                 adjustScaling(width, height, scale);
             }
