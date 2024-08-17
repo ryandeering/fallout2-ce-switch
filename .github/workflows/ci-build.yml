@@ -22,13 +22,13 @@ jobs:
 
       - name: Run build commands inside Docker container
         run: |
-          cmake --preset switch-dev
-          cmake --build --preset switch-dev
+          cmake --preset switch
+          cmake --build --preset switch
 
       - name: Create zip with binaries
         run: |
           DATE_TIME=$(date +'%Y-%m-%d_%H-%M-%S')
-          zip -j "fallout2-ce_${DATE_TIME}.zip" build/switch-dev/fallout2-ce.nro
+          zip -j "fallout2-ce_${DATE_TIME}.zip" build/switch/fallout2-ce.nro
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
