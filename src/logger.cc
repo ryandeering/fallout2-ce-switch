@@ -19,8 +19,6 @@ Logger& Logger::getInstance() {
 
 void Logger::redirectStdio() {
 #ifdef __SWITCH__
-    fsInitialize();
-
     time_t now = time(NULL);
     struct tm* t = localtime(&now);
     char logFileName[64];
