@@ -14,27 +14,23 @@ jobs:
     name: Switch Release build
 
     runs-on: ubuntu-latest
+    container: devkitpro/devkita64:latest
 
     steps:
+      env:
+        F2_VERSION: ${{ github.event.release.tag_name }}
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Run build commands inside Docker container
         run: |
-          docker run --rm -v ${{ github.workspace }}:/workspace -e F2_VERSION=${{ github.event.release.tag_name }} devkitpro/devkita64:latest bash -c "
-            cd /workspace &&
-            export DEVKITPRO=/opt/devkitpro &&
-            export DEVKITA64=/opt/devkitpro/devkitA64 &&
-            export PATH=\$DEVKITA64/bin:\$DEVKITPRO/tools/bin:\$PATH &&
-            mkdir -p build &&
-            cd build &&
-            cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain/switch.cmake -DNX=ON &&
-            make -j\$(nproc)
-          "
+          cmake --preset switch
+          cmake --build --preset switch
 
       - name: Upload binaries
         run: |
           cd build
-          gh release upload ${{ github.event.release.tag_name }} fallout2-ce.nro fallout2-ce.nso
+          gh release upload ${{ github.event.release.tag_name }} fallout2-ce.nro
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
