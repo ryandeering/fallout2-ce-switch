@@ -58,7 +58,7 @@ If you encounter any issues, please create an issue ticket, and I'll look into i
 
 - **Fallout 1 wen?**
 
-> When I get some time 🙂
+> [Now!](https://github.com/ryandeering/fallout-ce-switch)
 
 ## Credits
 
