@@ -15,7 +15,25 @@ You must own the game to play and have a Switch capable of running **unsigned co
 1. Purchase your copy on [GOG](https://www.gog.com/game/fallout_2) or [Steam](https://store.steampowered.com/app/38410). The files need to be from a Windows installation (I think.)
 2. Download the latest [release](https://github.com/ryandeering/fallout2-ce-switch/releases/latest) or build from the source. See YAML pipelines for reference.
 3. Drag the installation files into a new folder called `fallout2` in your `switch` folder on the root of your SD card.
-4. Put the necessary executable in your `switch` folder on the root of your SD card, either `.nro` or `.nso`.
+4. Create a file named fallout2_nx.ini in your 'fallout2' folder
+5. In the fallout2_nx.ini file, paste the following content:
+```ini
+[MAIN]
+SCR_WIDTH=1708
+SCR_HEIGHT=960
+SCALE_2X=1
+; Change resolution and determine scaling. SCALE_2X=1 will turn 2x scaling on. SCALE_2X=0 will turn it off. 
+
+[IFACE]
+IFACE_BAR_MODE=0
+IFACE_BAR_WIDTH=800
+IFACE_BAR_SIDE_ART=1
+IFACE_BAR_SIDES_ORI=0
+; I wouldn't change these if you don't know what you're doing. Related to the interface bar.`
+```
+*WARNING* Failure to create the fallout2_nx.ini and required content in it will cause the game to immediately crash upon launch!
+
+6. Put the necessary executable in your `switch` folder on the root of your SD card, either `.nro` or `.nso`.
 
 > **Note:** Any Fallout 2 saves, CE or not, should work on this port. However, I'm not responsible if your save somehow corrupts!
 
