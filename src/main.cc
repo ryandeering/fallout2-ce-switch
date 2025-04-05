@@ -42,6 +42,10 @@
 #include "word_wrap.h"
 #include "worldmap.h"
 
+#ifdef __SWITCH__
+#include <switch.h>
+#endif
+
 namespace fallout {
 
 #define DEATH_WINDOW_WIDTH 640
@@ -116,6 +120,11 @@ int falloutMain(int argc, char** argv)
     if (mainMenuWindowInit() == 0) {
         bool done = false;
         while (!done) {
+            #ifdef __SWITCH__
+                // returns false when closed via the home menu.
+                done = !appletMainLoop();
+            #endif
+
             keyboardReset();
             _gsound_background_play_level_music("07desert", 11);
             mainMenuWindowUnhide(1);

@@ -1,0 +1,40 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 21,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "switch-dev",
+            "displayName": "switch-dev",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "toolchainFile": "$env{DEVKITPRO}/cmake/Switch.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "switch",
+            "displayName": "switch",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "toolchainFile": "$env{DEVKITPRO}/cmake/Switch.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "switch-dev",
+            "configurePreset": "switch-dev",
+            "jobs": 6
+        },
+        {
+            "name": "switch",
+            "configurePreset": "switch",
+            "jobs": 6
+        }
+    ]
+}
